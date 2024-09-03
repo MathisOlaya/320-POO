@@ -17,9 +17,14 @@ namespace ParaClub
             //Instantiate plane
             Plane plane = new Plane(0);
 
+            //Para
+            Para para = new Para("Bob");
+
             while (true)
             {
                 plane.MovePlane();
+
+                para.checkKeyPressed();
 
                 //Speed
                 Thread.Sleep(100);
