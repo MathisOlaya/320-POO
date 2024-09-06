@@ -14,17 +14,29 @@ namespace ParaClub
             Console.WindowHeight = Config.SCREEN_HEIGHT;
             Console.WindowWidth = Config.SCREEN_WIDTH;
 
+            //Settings
+            Console.CursorVisible = true;
+
             //Instantiate plane
             Plane plane = new Plane(0);
 
-            //Para
-            Para para = new Para("Bob");
-
+            plane.Draw();
             while (true)
             {
-                plane.MovePlane();
+                if(Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo cki = Console.ReadKey(false);
+                    switch (cki.Key)
+                    {
+                        case ConsoleKey.Escape:
+                            Environment.Exit(0);
+                            break;
+                        case ConsoleKey.Spacebar:
+                            break;
+                    }
+                }
 
-                para.checkKeyPressed();
+                plane.Update();
 
                 //Speed
                 Thread.Sleep(100);
