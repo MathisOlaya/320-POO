@@ -20,6 +20,9 @@ namespace ParaClub
             //Instantiate plane
             Plane plane = new Plane(0);
 
+            //Instantiate player
+            Para player1 = new Para();
+
             plane.Draw();
             while (true)
             {
@@ -32,6 +35,7 @@ namespace ParaClub
                             Environment.Exit(0);
                             break;
                         case ConsoleKey.Spacebar:
+                            player1.Draw(plane._x);
                             break;
                     }
                 }
