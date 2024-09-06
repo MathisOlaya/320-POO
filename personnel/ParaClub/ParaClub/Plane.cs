@@ -8,14 +8,10 @@ namespace ParaClub
 {
     public class Plane
     {
-        public int _x;
+        private int _x = 0;
+        private int paraNumber = 0;
 
-
-        public Plane(int x) 
-        {
-            _x = x;
-        }
-        private string[] view =
+        public static string[] view =
         {
             @" _                         ",
             @"| \                        ",
@@ -24,25 +20,34 @@ namespace ParaClub
             @"  \_______ --------- __>-} ",
             @"        \_____|_____/   |  "
         };
+
+        public int X { get => _x; set => _x = value; }
+
         public void Draw()
         {
-            //Dessiner la premiere fois l'avion
-            Console.SetCursorPosition(_x, 0);
-            foreach (string line in view)
+            foreach(string line in view)
             {
                 Console.WriteLine(line);
             }
         }
-
         public void Update()
         {
-            //Déplacer la zone
-            Console.MoveBufferArea(_x, 0, view[0].Length, 6, _x + 1, 0);
+            if(_x + view[0].Length < Config.SCREEN_WIDTH)
+            {
+                Console.MoveBufferArea(_x, 0, view[0].Length, 6, _x + 1, 0);
+                _x += 1;
+            }
+            
+            
+        }
 
-            //Placer le curseur
-            Console.SetCursorPosition(_x, 0);
-
-            _x++;
+        public void DropParachutists()
+        {
+            Para player = new Para("Blud" + paraNumber.ToString());
+            paraNumber += 1;
+            player.x = _x;
+            player.Draw(player.withoutParachute);
+            Program.parachutists.Add(player);
         }
     }
 }

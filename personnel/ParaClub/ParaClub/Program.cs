@@ -6,45 +6,55 @@ using System.Threading;
 
 namespace ParaClub
 {
-    internal class Program
+    public class Program
     {
+        public static List<Para> parachutists = new List<Para>();
         static void Main(string[] args)
         {
             //Windows settings 
             Console.WindowHeight = Config.SCREEN_HEIGHT;
             Console.WindowWidth = Config.SCREEN_WIDTH;
+            Console.CursorVisible = false;
 
             //Settings
-            Console.CursorVisible = true;
+            Console.CursorVisible = false;
 
-            //Instantiate plane
-            Plane plane = new Plane(0);
+            //instance plane
+            Plane plane = new Plane();
 
-            //Instantiate player
-            Para player1 = new Para();
-
+            //draw plane 
             plane.Draw();
+
             while (true)
             {
                 if(Console.KeyAvailable)
                 {
                     ConsoleKeyInfo cki = Console.ReadKey(false);
-                    switch (cki.Key)
+
+                    switch(cki.Key)
                     {
                         case ConsoleKey.Escape:
                             Environment.Exit(0);
                             break;
                         case ConsoleKey.Spacebar:
-                            player1.Draw(plane._x);
+                            plane.DropParachutists();
                             break;
                     }
                 }
-
                 plane.Update();
 
-                //Speed
-                Thread.Sleep(100);
+                foreach(Para para in parachutists)
+                {
+                    para.Update();
+                }
+
+
+                Thread.Sleep(50);
             }
+
+        
+
+            
         }
     }
 }

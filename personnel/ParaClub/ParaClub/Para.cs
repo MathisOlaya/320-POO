@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace ParaClub
 {
-    internal class Para
+    public class Para
     {
-        private string[] withoutParachute =
+        public int x;
+        public string username;
+        private int altitude = 6;
+
+        public Para(string name) 
+        {
+            username = name;
+        }
+        public string[] withoutParachute =
         {
          @"     ",
          @"     ",
@@ -17,7 +25,7 @@ namespace ParaClub
          @" /░\ ",
          @" / \ ",
         };
-        private string[] withParachute =
+        public string[] withParachute =
         {
          @" ___ ",
          @"/|||\",
@@ -26,20 +34,44 @@ namespace ParaClub
          @"  ░  ",
          @" / \ ",
         };
-        public void Draw(int x)
+        
+        public void Draw(string[] parachuteAnimation)
         {
-            int y = 3;
-            
-            foreach (string line in withoutParachute)
+            for(int y = 0; y < withoutParachute.Length; y++)
             {
-                Console.SetCursorPosition(x, y++);
-                Console.WriteLine(line);
+                Console.SetCursorPosition(x, y + altitude);
+                Console.Write(parachuteAnimation[y]);
+
+                if(y == 0)
+                {
+                    Console.SetCursorPosition(x, y + altitude);
+                    Console.Write(username);
+                }
             }
         }
-
-        public void Drop()
+       
+        public void Update()
         {
+            if(altitude < Config.SCREEN_HEIGHT - 6)
+            {
+                if (altitude < Config.SCREEN_HEIGHT / 2)
+                {
+                    Console.MoveBufferArea(x, altitude, withoutParachute[0].Length + 1, 6, x, altitude + 3);
+                    altitude += 3;
+                }
+                else
+                {
+                    Console.MoveBufferArea(x, altitude, withoutParachute[0].Length + 1, 6, x, altitude + 1);
+                    altitude += 1;
+                    Draw(withParachute);
+                }
 
+            }
+            else
+            {
+                Draw(withoutParachute);
+            }
+            
         }
     }
 }
