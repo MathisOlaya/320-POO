@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
 namespace Snail
@@ -21,21 +20,14 @@ namespace Snail
 
             //variables 
 
-
-            //init snail
-            Snail snail_1 = new Snail(START_POS, 5, SNAIL_PV, "yoyo", ConsoleColor.Red);
-            Snail snail_2 = new Snail(START_POS, 10, SNAIL_PV, "matod", ConsoleColor.Green);
-            Snail snail_3 = new Snail(START_POS, 15, SNAIL_PV,"chonchon", ConsoleColor.Cyan);
-            Snail snail_4 = new Snail(START_POS, 20, SNAIL_PV,"zebi", ConsoleColor.Magenta);
-
             //instantiate list
-            all_snails = new List<Snail>();
-
-            //add to list
-            all_snails.Add(snail_1);
-            all_snails.Add(snail_2);
-            all_snails.Add(snail_3);
-            all_snails.Add(snail_4);
+            all_snails = new List<Snail>()
+            {
+                new Snail(START_POS, 5, SNAIL_PV, "yoyo", ConsoleColor.Red),
+                new Snail(START_POS, 10, SNAIL_PV, "matod", ConsoleColor.Green),
+                new Snail(START_POS, 15, SNAIL_PV,"chonchon", ConsoleColor.Cyan),
+                new Snail(START_POS, 20, SNAIL_PV,"zebi", ConsoleColor.Magenta)
+            };
 
 
             //Create race
