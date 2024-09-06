@@ -45,7 +45,7 @@ namespace ParaClub
         {
             Para player = new Para("Blud" + paraNumber.ToString());
             paraNumber += 1;
-            player.x = _x;
+            player.X = _x;
             player.Draw(player.withoutParachute);
             Program.parachutists.Add(player);
         }

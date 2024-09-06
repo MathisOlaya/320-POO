@@ -8,8 +8,8 @@ namespace ParaClub
 {
     public class Para
     {
-        public int x;
-        public string username;
+        private int x;
+        private string username;
         private int altitude = 6;
 
         public Para(string name) 
@@ -34,7 +34,9 @@ namespace ParaClub
          @"  ░  ",
          @" / \ ",
         };
-        
+
+        public int X { get => x; set => x = value; }
+
         public void Draw(string[] parachuteAnimation)
         {
             for(int y = 0; y < withoutParachute.Length; y++)
