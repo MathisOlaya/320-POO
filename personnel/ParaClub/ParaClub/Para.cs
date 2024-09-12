@@ -8,35 +8,72 @@ namespace ParaClub
 {
     public class Para
     {
-        string _name;
+        private int x;
+        private string username;
+        private int altitude = 6;
 
-        int x;
-        
-        public Para(string name)
+        public Para(string name) 
         {
-            _name = name;
+            username = name;
         }
-
-        public void checkKeyPressed()
+        public string[] withoutParachute =
         {
-            if (Console.KeyAvailable)
+         @"     ",
+         @"     ",
+         @"     ",
+         @"  o  ",
+         @" /░\ ",
+         @" / \ ",
+        };
+        public string[] withParachute =
+        {
+         @" ___ ",
+         @"/|||\",
+         @"\   /",
+         @" \o/ ",
+         @"  ░  ",
+         @" / \ ",
+        };
+
+        public int X { get => x; set => x = value; }
+
+        public void Draw(string[] parachuteAnimation)
+        {
+            for(int y = 0; y < withoutParachute.Length; y++)
             {
-                switch (Console.ReadKey().Key)
+                Console.SetCursorPosition(x, y + altitude);
+                Console.Write(parachuteAnimation[y]);
+
+                if(y == 0)
                 {
-                    case ConsoleKey.Escape:
-                        Environment.Exit(0);
-                        break;
-                    case ConsoleKey.Spacebar:
-                        JumpPara();
-                        break;
+                    Console.SetCursorPosition(x, y + altitude);
+                    Console.Write(username);
                 }
             }
         }
-
-        private void JumpPara()
+       
+        public void Update()
         {
-            Console.SetCursorPosition(x, 10);
-            Console.WriteLine("Here");
+            if(altitude < Config.SCREEN_HEIGHT - 6)
+            {
+                if (altitude < Config.SCREEN_HEIGHT / 2)
+                {
+                    Console.MoveBufferArea(x, altitude, withoutParachute[0].Length + 1, 6, x, altitude + 3);
+                    altitude += 3;
+                }
+                else
+                {
+                    Console.MoveBufferArea(x, altitude, withoutParachute[0].Length + 1, 6, x, altitude + 1);
+                    altitude += 1;
+                    Draw(withParachute);
+                }
+
+            }
+            else
+            {
+                Draw(withoutParachute);
+            }
+            
         }
     }
 }
