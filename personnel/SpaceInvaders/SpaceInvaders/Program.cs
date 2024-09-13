@@ -18,7 +18,7 @@ namespace SpaceInvaders
             {
                 player.Update();
 
-                Thread.Sleep(100);
+                Thread.Sleep(10);
             }
         }
     }

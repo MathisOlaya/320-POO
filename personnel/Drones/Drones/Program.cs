@@ -21,8 +21,10 @@ namespace Drones
             };
             List<Building> buildings = new()
             {
-                new(300, 300, 140, 200, Color.Yellow),
+                new Factory(GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 500), Color.Black, 100),
+                new Store(GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 300), Color.Red, new List<String>{"Lundi 8-16h", "Mardi 10h-12h"})
             };
+            
 
             // Démarrage
             Application.Run(new AirSpace(fleet, buildings));

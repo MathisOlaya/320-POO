@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SpaceInvaders
@@ -12,7 +13,7 @@ namespace SpaceInvaders
         Bullet bullet;
         private List<Bullet> Bullets = new List<Bullet>();
 
-        private const char PLAYER_CHAR = 'X';
+        private const char PLAYER_CHAR = 'O';
 
         private readonly int DEFAULT_POS_X = Console.WindowWidth / 2 - 1;
         private readonly int DEFAULT_POS_Y = Console.WindowHeight - 5;
@@ -34,7 +35,6 @@ namespace SpaceInvaders
         public void Update()
         {
             CheckDeplacement();
-            
             //bullets update 
             foreach(Bullet blt in Bullets)
             {
@@ -58,7 +58,6 @@ namespace SpaceInvaders
                         break;
                 }
             }
-  
         }
         public void EmitShoot()
         {

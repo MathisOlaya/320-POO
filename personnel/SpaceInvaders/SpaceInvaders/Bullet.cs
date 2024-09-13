@@ -32,6 +32,15 @@ namespace SpaceInvaders
         public void MoveBullet()
         {
             Console.MoveBufferArea(BULLET_POS_X, Bullet_Pos_Y, BULLET_CHAR.ToString().Length, 1, BULLET_POS_X, Bullet_Pos_Y > 1 ? Bullet_Pos_Y -= 1 : Bullet_Pos_Y);
+            CheckBulletLimit();
+        }
+        private void CheckBulletLimit()
+        {
+            if(Bullet_Pos_Y == 1)
+            {
+                Console.SetCursorPosition(BULLET_POS_X, Bullet_Pos_Y);
+                Console.Write(' ');
+            }
         }
     }
 }

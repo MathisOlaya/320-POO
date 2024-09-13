@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Drones
 {
-    public partial class Building
+    public abstract partial class Building
     {
         public int X {  get; private set; }
         public int Y { get; private set; }
@@ -21,7 +21,8 @@ namespace Drones
             Y = y;
             Width = width; 
             Height = height;
-            _buildBrush = new(color);
+            Color = color;
+            _brush = new SolidBrush(color);
        }
 
     }

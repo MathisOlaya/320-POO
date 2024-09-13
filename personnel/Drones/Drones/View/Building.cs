@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 
 namespace Drones
 {
-    public partial class Building
+    public abstract partial class Building
     {
-        private SolidBrush _buildBrush;
+        protected SolidBrush _brush;
 
         public void Render(BufferedGraphics drawingSpace)
         {
-            drawingSpace.Graphics.FillRectangle(_buildBrush, new Rectangle(X , Y, Width, Height));
+            drawingSpace.Graphics.FillRectangle(_brush, new Rectangle(X , Y, Width, Height));
+        }
+        protected virtual void Print()
+        {
+            Console.WriteLine("------------------------");
+            Console.WriteLine("Width : " + Width);
+            Console.WriteLine("X et Y " + X + " " + Y);
+            Console.WriteLine("Color : " + Color);
         }
     }
 }
