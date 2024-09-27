@@ -12,6 +12,7 @@ namespace Drones
         public int X { get; private set; }                                // Position en X depuis la gauche de l'espace aérien
         public int Y { get; private set; }                                 // Position en Y depuis le haut de l'espace aérien
         public bool LowBattery { get; private set; }
+        private EvacuationState EvacuationState { get; set; }
 
 
         // Cette méthode calcule le nouvel état dans lequel le drone se trouve après
@@ -22,6 +23,7 @@ namespace Drones
             Name = name;
             X = x;
             Y = y;
+            EvacuationState = EvacuationState.Free;
         }
         public void Update(int interval)
         {
@@ -36,17 +38,42 @@ namespace Drones
 
         public bool Evacuate(Rectangle zone)
         {
-            throw new NotImplementedException();
+            //If don't have charge left.
+            if(Charge <= 0) return false;
+
+            //Check if is in zone
+            bool isInZone = (X >= zone.X && X <= zone.X + zone.Width
+                            && Y >= zone.Y && zone.Y <= zone.Y + zone.Height);
+
+            if (isInZone)
+            {
+                //Change evacuation test
+                EvacuationState = EvacuationState.Evacuating;
+
+                X += (X >= zone.X + zone.Width / 2) ? 1 : -1;
+                Y += (Y >= zone.Y + zone.Height / 2) ? 1 : -1;
+
+                //Check if he's outside 
+                if(X > zone.X + zone.Width || X < zone.X &&
+                    Y > zone.Y + zone.Height || Y < zone.Y)
+                {
+                    EvacuationState = EvacuationState.Evacuated;
+                    return true;
+                }
+                return false;
+            }
+            
+            EvacuationState = EvacuationState.Evacuated;
+            return true;
+            
         }
 
-        public void FreeFlight()
-        {
-            throw new NotImplementedException();
-        }
+        public void FreeFlight() => EvacuationState = EvacuationState.Free;
+
 
         public EvacuationState GetEvacuationState()
         {
-            throw new NotImplementedException();
+            return EvacuationState;
         }
     }
 }
