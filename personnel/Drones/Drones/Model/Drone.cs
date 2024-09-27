@@ -3,7 +3,7 @@
 namespace Drones
 {
     // Cette partie de la classe Drone définit ce qu'est un drone par un modèle numérique
-    public partial class Drone
+    public partial class Drone : IExpellable
     {
         public static readonly int DEFAULT_CHARGE = 1000;
 
@@ -11,12 +11,12 @@ namespace Drones
         public string Name { get; private set; }                           // Un nom
         public int X { get; private set; }                                // Position en X depuis la gauche de l'espace aérien
         public int Y { get; private set; }                                 // Position en Y depuis le haut de l'espace aérien
-        public bool LowBattery { get; private set; }                         
+        public bool LowBattery { get; private set; }
 
 
         // Cette méthode calcule le nouvel état dans lequel le drone se trouve après
         // que 'interval' millisecondes se sont écoulées
-        public Drone(string name, int x, int y)
+        public Drone(string name, int x, int y) : base()
         {
             Charge = DEFAULT_CHARGE;
             Name = name;
@@ -34,5 +34,19 @@ namespace Drones
                 LowBattery = true;
         }
 
+        public bool Evacuate(Rectangle zone)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void FreeFlight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public EvacuationState GetEvacuationState()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -18,6 +18,9 @@ namespace Drones
         BufferedGraphicsContext currentContext;
         BufferedGraphics airspace;
 
+       
+
+
         // Initialisation de l'espace aérien avec un certain nombre de drones
         public AirSpace(List<Drone> fleet, List<Building> buildings)
         {

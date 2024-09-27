@@ -23,14 +23,7 @@ namespace Drones
                 new("Joe", 160, 110),
                 new("Joe", 170, 134),
                 new("Joe", 120, 173),
-                new("Joe", 150, 124),
-                new("Joe", 180, 186),
-                new("Joe", 190, 124),
-                new("Joe", 120, 165),
-                new("Joe", 110, 134),
-                new("Joe", 155, 199),
-                new("Joe", 134, 123),
-                new("Joe", 124, 189),
+          
             };
             List<Building> buildings = new()
             {
