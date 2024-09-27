@@ -27,7 +27,12 @@ namespace Drones
             // Creates a BufferedGraphics instance associated with this form, and with
             // dimensions the same size as the drawing surface of the form.
             airspace = currentContext.Allocate(CreateGraphics(), DisplayRectangle);
-            _fleet = fleet;
+            
+            this._fleet = fleet;
+
+            if(fleet.Count > 10)
+                throw new ArgumentOutOfRangeException(nameof(fleet), "Too many drones");
+
             _buildings = buildings;
         }
 
