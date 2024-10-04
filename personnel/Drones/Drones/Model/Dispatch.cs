@@ -8,16 +8,21 @@ namespace Drones
 {
     public class Dispatch : IDispatchable
     {
-        public List<Box> AllBoxes => throw new NotImplementedException();
+        public List<Box> AllBoxes { get; set;  }
+
+        public Dispatch()
+        {
+            AllBoxes = new List<Box>();
+        }
 
         public void AddBox(Box box)
         {
-            throw new NotImplementedException();
+            AllBoxes.Add(box);
         }
 
         public void RemoveBox(Box box)
         {
-            throw new NotImplementedException();
+            AllBoxes.Remove(box);
         }
     }
 }
