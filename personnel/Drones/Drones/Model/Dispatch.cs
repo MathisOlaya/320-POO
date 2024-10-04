@@ -18,6 +18,8 @@ namespace Drones
         public void AddBox(Box box)
         {
             AllBoxes.Add(box);
+
+            Console.WriteLine("Une box à été ajoutée ! " + box.BoxNumber.ToString());
         }
 
         public void RemoveBox(Box box)
