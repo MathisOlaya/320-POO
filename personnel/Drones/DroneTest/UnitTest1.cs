@@ -82,6 +82,33 @@ namespace DroneTest
             //Assert
             Assert.AreEqual(EvacuationState.Evacuated, drone.GetEvacuationState());
         }
+        [TestMethod]
+        public void Test_That_The_List_Contains_Every_New_Box()
+        {
+            //Arrange
+            Box box = new Box(1, 50, Color.Red);
+            Dispatch dispatch = new Dispatch();
+
+            //Act
+            dispatch.AddBox(box);
+
+            //Assert
+            Assert.AreEqual(box, dispatch.AllBoxes.First());
+        }
+        [TestMethod]
+        public void Test_That_Box_Is_Removed_From_List()
+        {
+            //Arrange 
+            Dispatch dispatch = new Dispatch();
+            Box box = new Box(1, 50, Color.Red);
+            dispatch.AllBoxes.Add(box);
+
+            //Act
+            dispatch.RemoveBox(box);
+
+            //Assert
+            Assert.AreEqual(0, dispatch.AllBoxes.Count);
+        }
 
 
     }
