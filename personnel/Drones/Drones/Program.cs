@@ -18,13 +18,13 @@ namespace Drones
             // Création de la flotte de drones
             List<Drone> fleet = new()
             {
-                new("Joe", 150, 150),
+                new("Joe", 75, 75),
           
             };
             List<Building> buildings = new()
             {
-                new Factory(GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 500), Color.Black, 100),
-                new Store(GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 800), GlobalHelpers.Alea(0, 300), Color.Red, new List<String>{"Lundi 8-16h", "Mardi 10h-12h"})
+                new Factory(GlobalHelpers.Alea(0, 400), GlobalHelpers.Alea(0, 400), GlobalHelpers.Alea(0, 200), Color.Black, 100),
+                new Store(GlobalHelpers.Alea(0, 300), GlobalHelpers.Alea(0, 300), GlobalHelpers.Alea(0, 300), Color.Red, new List<String>{"Lundi 8-16h", "Mardi 10h-12h"})
             };
 
 

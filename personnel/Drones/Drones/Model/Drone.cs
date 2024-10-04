@@ -25,11 +25,17 @@ namespace Drones
             Y = y;
             EvacuationState = EvacuationState.Free;
         }
+
+        public Drone()
+        {
+        }
+
         public void Update(int interval)
         {
             X += 2;                                    // Il s'est déplacé de 2 pixels vers la droite
             Y += GlobalHelpers.Alea(-2, 3);                     // Il s'est déplacé d'une valeur aléatoire vers le haut ou le bas
             Charge--;                                  // Il a dépensé de l'énergie
+            Console.WriteLine(EvacuationState.ToString());
 
             //Si la charge est plus petite que 20%.
             if(Charge < DEFAULT_CHARGE / 5 && !LowBattery)
@@ -54,8 +60,8 @@ namespace Drones
                 Y += (Y >= zone.Y + zone.Height / 2) ? 1 : -1;
 
                 //Check if he's outside 
-                if(X > zone.X + zone.Width || X < zone.X &&
-                    Y > zone.Y + zone.Height || Y < zone.Y)
+                if(X < zone.X || X > zone.X + zone.Width ||
+                    Y < zone.Y || Y > zone.Y + zone.Height)
                 {
                     EvacuationState = EvacuationState.Evacuated;
                     return true;

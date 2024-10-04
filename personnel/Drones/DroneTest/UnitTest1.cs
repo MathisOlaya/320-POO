@@ -1,4 +1,5 @@
 using Drones;
+using System.Drawing;
 
 namespace DroneTest
 {
@@ -66,6 +67,20 @@ namespace DroneTest
 
             // Assert
             Assert.AreEqual(EvacuationState.Free, drone.GetEvacuationState());
+        }
+        [TestMethod]
+        public void Test_That_drone_is_leaving_zone_when_he_is_in()
+        {
+            //Arrange
+            Drone drone = new Drone("Parker", 75, 75);
+            Rectangle rctgl = new Rectangle(50, 50, 50, 50);
+
+            //Act
+            while(drone.GetEvacuationState() != EvacuationState.Evacuated)
+                drone.Evacuate(rctgl);
+
+            //Assert
+            Assert.AreEqual(EvacuationState.Evacuated, drone.GetEvacuationState());
         }
 
 

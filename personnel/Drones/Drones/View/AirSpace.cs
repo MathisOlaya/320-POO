@@ -45,10 +45,10 @@ namespace Drones
         {
             airspace.Graphics.Clear(Color.AliceBlue);
 
-            //Optionnal
-            SolidBrush _brush = new SolidBrush(Color.Orange);
-            Rectangle rect = new Rectangle(100, 100, 400, 400);
-            airspace.Graphics.FillRectangle(_brush, rect);
+            ////Optionnal
+            //SolidBrush _brush = new SolidBrush(Color.Orange);
+            //Rectangle rect = new Rectangle(50,50,50,50);
+            //airspace.Graphics.FillRectangle(_brush, rect);
 
             // draw drones
             foreach (Drone drone in _fleet)
@@ -82,7 +82,7 @@ namespace Drones
             {
                 drone.Update(interval);
 
-                Rectangle rect = new Rectangle(100, 100, 400, 400);
+                Rectangle rect = new Rectangle(50, 50, 50, 50);
                 drone.Evacuate(rect);
                 
             }
