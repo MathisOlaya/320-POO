@@ -19,6 +19,8 @@ namespace Drones
         BufferedGraphicsContext currentContext;
         BufferedGraphics airspace;
 
+        private Dispatch _dispatch = new Dispatch();
+
        
 
 
