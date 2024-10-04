@@ -35,7 +35,7 @@ namespace Drones
             X += 2;                                    // Il s'est déplacé de 2 pixels vers la droite
             Y += GlobalHelpers.Alea(-2, 3);                     // Il s'est déplacé d'une valeur aléatoire vers le haut ou le bas
             Charge--;                                  // Il a dépensé de l'énergie
-            Console.WriteLine(EvacuationState.ToString());
+            
 
             //Si la charge est plus petite que 20%.
             if(Charge < DEFAULT_CHARGE / 5 && !LowBattery)

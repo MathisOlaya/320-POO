@@ -86,6 +86,11 @@ namespace Drones
                 drone.Evacuate(rect);
                 
             }
+            foreach (Building building in _buildings)
+            {
+                if (building is Factory factory)
+                    factory.Update(interval);
+            }
         }
 
         // Méthode appelée à chaque frame
